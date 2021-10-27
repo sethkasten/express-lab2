@@ -21,10 +21,8 @@ pizzaRouter.get("/", (req, res) => {
   res.render("homepage");
 });
 
-pizzaRouter.get("/review-confirmation", (req, res) => {
-  let name: string = req.query.name as string;
-  let comment: string = req.query.comment as string;
-  let rating: string = req.query.rating as string;
+pizzaRouter.post("/review-confirmation", (req, res) => {
+  let { name, comment, rating } = req.body;
   res.render("review-confirmation", { name, comment, rating });
 });
 
