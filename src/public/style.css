@@ -1,0 +1,16 @@
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.pizza-slice-img {
+  width: 200px;
+}
+
+.nav {
+  display: flex;
+}
+
+.build-form-end {
+  display: flex;
+  flex-direction: column;
+}
