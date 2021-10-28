@@ -15,11 +15,12 @@
         <option value="Medium">Medium</option>
         <option value="Large">Large</option>
       </select>
-      <label for="toppings">How many toppings?</label>
-      <input type="number" name="toppings" id="toppings" />
-      <ul>
+      <ul class="topping-list">
         {{#each toppingArray}}
-          <li>{{this}}</li>
+          <li>
+            <label for={{this}}>{{this}}</label>
+            <input type="checkbox" name={{this}} id={{this}} value="yes" />
+          </li>
         {{/each}}
       </ul>
       <div class="build-form-end">

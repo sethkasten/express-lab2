@@ -9,7 +9,12 @@
   <body>
     <h1>Your pizza</h1>
     <p>Size: {{size}}</p>
-    <p>Toppings: {{toppings}}</p>
+    <p>Toppings:</p>
+    <ul>
+      {{#each selectedToppings}}
+        <li>{{this}}</li>
+      {{/each}}
+    </ul>
     <p>Gluten-Free Crust: {{gluten}}</p>
     <p>Special Instructions: {{instructions}}</p>
     <p>Price: ${{stringPrice}}</p>

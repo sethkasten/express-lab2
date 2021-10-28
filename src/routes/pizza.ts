@@ -10,9 +10,9 @@ const toppingArray: string[] = [
   "Chicken",
   "Mushroom",
   "Olive",
-  "Green Pepper",
+  "GreenPepper",
   "Onion",
-  "Banana Pepper",
+  "BananaPepper",
   "Anchovies",
   "Pineapple",
 ];
@@ -41,7 +41,41 @@ pizzaRouter.get("/build-your-own", (req, res) => {
 });
 
 pizzaRouter.post("/build-your-own-submission", (req, res) => {
-  let { size, toppings, gluten, instructions } = req.body;
+  let { size, gluten, instructions } = req.body;
+  let {
+    Pepperoni,
+    Sausage,
+    Chicken,
+    Mushroom,
+    Olive,
+    GreenPepper,
+    Onion,
+    BananaPepper,
+    Anchovies,
+    Pineapple,
+  } = req.body;
+  let fullToppingsArray: string[] = [
+    Pepperoni,
+    Sausage,
+    Chicken,
+    Mushroom,
+    Olive,
+    GreenPepper,
+    Onion,
+    BananaPepper,
+    Anchovies,
+    Pineapple,
+  ];
+  let selectedToppings: string[] = [];
+  let toppings: number = 0;
+  let i = 0;
+  fullToppingsArray.forEach((topping) => {
+    if (topping === "yes") {
+      toppings++;
+      selectedToppings.push(toppingArray[i]);
+    }
+    i++;
+  });
   let price: number = 0;
   if (size === "Small") {
     price += 7 + toppings * 0.5;
@@ -64,11 +98,11 @@ pizzaRouter.post("/build-your-own-submission", (req, res) => {
   let stringPrice = price.toFixed(2);
   res.render("build-your-own-submission", {
     size,
-    toppings,
     gluten,
     instructions,
     stringPrice,
     shipping,
+    selectedToppings,
   });
 });
 
